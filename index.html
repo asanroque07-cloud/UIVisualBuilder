@@ -633,82 +633,6 @@ aside input[type=range]{height:38px}
 #sysdocs .status td:first-child{font-weight:600}
 #sysdocs{grid-template-columns:minmax(0,1fr)}
 #sysdocs .dcard{min-width:0;max-width:100%;overflow-x:auto}
-#sysdocs .dgbuild{padding-bottom:16px}
-.dgbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
-.dgbar input[type="text"]{flex:1 1 190px;min-width:0;font:inherit;font-size:13.5px;font-weight:600;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
-.dgseg{display:inline-flex;gap:2px;padding:3px;background:var(--bg);border:1px solid var(--line);border-radius:10px}
-.dgseg button{font:inherit;font-size:12.5px;font-weight:800;letter-spacing:.03em;color:var(--mut);background:none;border:0;border-radius:8px;padding:6px 12px;cursor:pointer}
-.dgseg button.on{background:var(--acc);color:#fff}
-.dgbar select{font:inherit;font-size:12.5px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;max-width:200px}
-.dgchk{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--mut);margin-left:auto}
-.dgwrap{display:grid;grid-template-columns:184px minmax(0,1fr) 220px;gap:14px;margin-top:14px;align-items:start}
-.dgpal{display:grid;gap:8px;align-content:start}
-.dgitem{display:grid;gap:2px;text-align:left;font:inherit;cursor:grab;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:9px 11px;touch-action:none;color:var(--ink)}
-.dgitem:hover{border-color:color-mix(in srgb,var(--acc) 50%,var(--line))}
-.dgitem b{font-size:12.5px}
-.dgitem small{font-size:10.5px;line-height:1.45;color:var(--mut)}
-.dgcv{position:relative;min-height:452px;border:1px dashed color-mix(in srgb,var(--ink) 18%,var(--line));border-radius:16px;overflow:hidden;touch-action:none;background-color:var(--bg);background-image:linear-gradient(color-mix(in srgb,var(--ink) 6%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--ink) 6%,transparent) 1px,transparent 1px);background-size:22px 22px,22px 22px}
-#dgEdges{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;color:color-mix(in srgb,var(--ink) 45%,transparent)}
-#dgEdges .ln{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
-#dgEdges .ln.on{stroke:var(--acc);stroke-width:2.6}
-#dgEdges .hit{fill:none;stroke:transparent;stroke-width:16;pointer-events:stroke;cursor:pointer}
-#dgEdges .lbl{font-size:10.5px;font-weight:800;fill:var(--mut)}
-#dgEdges.flow .ln{stroke-dasharray:7 6;animation:dgdash 1.1s linear infinite}
-@keyframes dgdash{to{stroke-dashoffset:-13}}
-#dgNodes{position:absolute;inset:0}
-#dgLabels{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-#dgLabels text{font-size:10.5px;font-weight:800;fill:var(--mut);stroke:var(--bg);stroke-width:3px;paint-order:stroke;stroke-linejoin:round}
-.dgn{position:absolute;width:170px;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 4px 14px rgba(26,36,66,.09);cursor:grab;touch-action:none;user-select:none;overflow:hidden}
-.dgn.on{outline:2px solid var(--acc);outline-offset:1px}
-.dgn header{display:flex;align-items:center;gap:6px;padding:7px 9px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--acc) 9%,transparent)}
-.dgn header b{flex:1;min-width:0;font-size:12.5px;line-height:1.35;overflow-wrap:anywhere}
-.dgn header button{flex:none;width:22px;height:22px;display:grid;place-items:center;font:inherit;font-size:13px;line-height:1;color:var(--mut);background:var(--panel);border:1px solid var(--line);border-radius:6px;cursor:pointer}
-.dgn header button:hover{color:var(--ink);border-color:var(--acc)}
-.dgn ul{list-style:none;margin:0;padding:5px 9px 7px;display:grid;gap:3px}
-.dgn li{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:var(--mut)}
-.dgn li span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.dgn .k{flex:none;font-size:9px;font-weight:800;letter-spacing:.04em;padding:1px 4px;border-radius:4px;color:var(--ink);background:color-mix(in srgb,var(--acc) 18%,transparent)}
-.dgn .dgmute{font-style:italic}
-.dgn.proc{border-radius:20px}
-.dgn.proc header{background:color-mix(in srgb,#4f7df3 12%,transparent);border-radius:19px 19px 0 0}
-.dgn.store{border-left:3px solid #4f7df3}
-.dgn.ext{border-left:3px solid var(--acc)}
-.dgn.rel{background:color-mix(in srgb,var(--acc) 7%,var(--panel))}
-.dgn.weak{border-style:dashed}
-.dghint{position:absolute;left:0;right:0;top:44%;text-align:center;font-size:13px;color:var(--mut);pointer-events:none;margin:0;padding:0 20px}
-.dghint[hidden]{display:none}
-.dgmsg{position:absolute;left:10px;top:10px;margin:0;font-size:11.5px;font-weight:700;color:var(--ink);background:var(--panel);border:1px solid var(--acc);border-radius:999px;padding:5px 11px}
-.dgmsg[hidden]{display:none}
-.dgins{display:grid;gap:6px;align-content:start;font-size:12.5px}
-.dglab{display:block;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:800;color:var(--mut);margin:6px 0 0}
-.dglab span{font-weight:600;letter-spacing:0;text-transform:none}
-.dgins input[type="text"],.dgins textarea,.dgins select{width:100%;font:inherit;font-size:12.5px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:7px 9px}
-.dgins textarea{min-height:78px;resize:vertical;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;line-height:1.5}
-.dgins .btn{margin-top:4px}
-.dgls{list-style:none;margin:0;padding:0;display:grid;gap:4px}
-.dgls li{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:11.5px;color:var(--mut);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 8px}
-.dgls li b{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.dgls li button{flex:none;font:inherit;font-size:13px;line-height:1;color:var(--mut);background:none;border:0;cursor:pointer;padding:0 2px}
-.dghelp{margin:2px 0 0;padding-left:16px;display:grid;gap:6px;font-size:11.5px;line-height:1.5;color:var(--mut)}
-.dghelp b{color:var(--ink)}
-.dgsteps{margin:12px 0 0;padding-left:20px;display:grid;gap:7px;font-size:12.5px;line-height:1.6;color:var(--mut)}
-.dgsteps b{color:var(--ink)}
-.dgchecks{margin-top:16px}
-.dgissues{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px}
-.dgissues li{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;line-height:1.5;color:var(--mut)}
-.dgissues .badge{flex:none}
-#dgGhost{position:fixed;z-index:90;pointer-events:none;transform:translate(-50%,-50%);background:var(--panel);border:1px solid var(--acc);border-radius:10px;padding:6px 10px;font-size:12px;font-weight:700;color:var(--ink);box-shadow:0 8px 22px rgba(26,36,66,.18)}
-@media(max-width:1080px){
- .dgwrap{grid-template-columns:1fr 200px}
- .dgpal{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}
- .dgitem{flex:1 1 140px}
-}
-@media(max-width:780px){
- .dgwrap{grid-template-columns:1fr}
- .dgins{grid-row:2}
- .dgcv{min-height:400px}
- .dgchk{margin-left:0}
-}
 #sysdocs details summary{cursor:pointer;font-weight:700;font-size:13px;margin-top:14px}
 #sysdocs pre{margin:12px 0 0;overflow:auto;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:11.5px;line-height:1.6}
 @media(max-width:780px){
@@ -761,6 +685,7 @@ aside input[type=range]{height:38px}
     <button class="snav" type="button" data-k="charstudio">Character studio</button>
     <button class="snav" type="button" data-k="mapstudio">Map studio</button>
     <button class="snav" type="button" data-k="schema">Diagram studio</button>
+    <button class="snav" type="button" data-k="systemdocs">System docs</button>
     <div class="sidefoot" id="sidefoot" hidden>
       <button class="snav" type="button" id="sideSwitch">Switch account</button>
       <button class="snav" type="button" id="sideLogout">Log out</button>
@@ -773,43 +698,6 @@ aside input[type=range]{height:38px}
   <p id="none" class="hint">No projects yet. Make your first website.</p>
   <div id="grid"></div>
   <div id="sysdocs" hidden>
-    <div class="dcard dgbuild">
-      <h2>Build a diagram <span class="badge ok" id="dgBadge">ready</span></h2>
-      <p class="dnote">Drag an object from the palette onto the canvas, move it where you like, then press <b>&rarr;</b> on an object and click a second object to link them. Everything stays in this browser.</p>
-      <div class="dgbar">
-        <input id="dgName" type="text" aria-label="Diagram name" value="Customer orders" maxlength="60">
-        <div class="dgseg" role="group" aria-label="Diagram type">
-          <button type="button" data-mode="erd" class="on">ERD</button>
-          <button type="button" data-mode="dfd">DFD</button>
-        </div>
-        <button class="btn sm" id="dgSave" type="button">Save</button>
-        <button class="btn sm" id="dgNew" type="button">New</button>
-        <select id="dgSaved" aria-label="Open a saved diagram"><option value="">Saved diagrams (0)</option></select>
-        <button class="btn sm" id="dgDel" type="button">Delete</button>
-        <label class="dgchk"><input type="checkbox" id="dgFlow" checked> Animate links</label>
-      </div>
-      <div class="dgwrap">
-        <aside class="dgpal" id="dgPal" aria-label="Objects to drag"></aside>
-        <div class="dgcv" id="dgCanvas">
-          <svg id="dgEdges" class="flow" aria-hidden="true"></svg>
-          <div id="dgNodes"></div>
-          <svg id="dgLabels" aria-hidden="true"></svg>
-          <p class="dghint" id="dgEmpty">Drag an object here to start your diagram</p>
-          <p class="dgmsg" id="dgLinkMsg" hidden>Now click the object you want to connect to.</p>
-        </div>
-        <aside class="dgins" id="dgIns" aria-label="Selected object settings"></aside>
-      </div>
-    </div>
-
-    <div class="dcard">
-      <h2>Live explanation <button class="btn sm" id="dgCopy" type="button">Copy</button></h2>
-      <p class="dnote">Read from the objects and links on the canvas, so it changes the moment you add, rename or connect something.</p>
-      <ol class="dgsteps" id="dgSteps"></ol>
-      <p class="dglab dgchecks">Checks</p>
-      <ul class="dgissues" id="dgIssues"></ul>
-      <p class="dnote" id="dgVerdict"></p>
-    </div>
-
     <div class="dcard">
       <h2>Tables and columns</h2>
       <table class="dtab">
@@ -831,7 +719,8 @@ aside input[type=range]{height:38px}
           <tr><td><code>dropform:projects</code></td><td>JSON array</td><td>written by index.html</td><td>Dashboard designs, including thumbnails</td></tr>
           <tr><td><code>charlab:projects</code></td><td>JSON array</td><td>written by studio.js</td><td>Characters, animations, frames</td></tr>
           <tr><td><code>mapstudio:maps</code></td><td>JSON array</td><td>written by game.js</td><td>Maps, objects, spawn point, key bindings</td></tr>
-          <tr><td><code>charlab:last</code> / <code>mapstudio:last</code></td><td>string</td><td>last opened id</td><td>Reopens the project you were editing</td></tr>
+          <tr><td><code>diagramstudio:diagrams</code></td><td>JSON array</td><td>written by diagram.js</td><td>Diagrams: objects, links, diagram type</td></tr>
+          <tr><td><code>charlab:last</code> / <code>mapstudio:last</code> / <code>diagramstudio:last</code></td><td>string</td><td>last opened id</td><td>Reopens the project you were editing</td></tr>
           <tr><td><code>uivb:theme</code> / <code>dropform:user</code></td><td>string</td><td>preference</td><td>Dark / light choice and guest display name</td></tr>
         </tbody>
       </table>
@@ -1745,7 +1634,8 @@ const WCAT={
  char:{n:'Character',card:'Make a character',name:'My character',mk:'Create character',empty:'No characters yet. Every part on the canvas can be dragged.',eyebrow:'CHARACTER WORKSPACE',title:'Your characters',sub:'Create a character here, then animate it in Character studio and use it in your games.'},
  charstudio:{n:'Character studio',card:'Make a character',name:'My character',mk:'Create character',empty:'No characters yet. Open Character studio to make your first one.',eyebrow:'CHARACTER WORKSPACE',title:'Your characters',sub:'Create a character, pose it and animate it by hand in Character studio, then use it in your games.'},
  mapstudio:{n:'Map studio',card:'Make a map',name:'My map',mk:'Create map',empty:'No maps yet. Open Map studio to build your first one.',eyebrow:'MAP WORKSPACE',title:'Your maps',sub:'Build 2D and 3D maps, place coins, doors and enemies, then play them in Map studio.'},
- schema:{n:'Diagram studio',card:'New diagram',name:'',mk:'',empty:'',eyebrow:'DIAGRAM WORKSPACE',title:'Your diagrams',sub:'Drag entities, processes and stores onto the canvas to build an ERD or DFD, and watch the live explanation update as you draw.'}};
+ schema:{n:'Diagram studio',card:'New diagram',name:'',mk:'',empty:'No diagrams yet. Open Diagram studio to build an ERD, DFD or use case.',eyebrow:'DIAGRAM WORKSPACE',title:'Your diagrams',sub:'Build tables, data flows and use cases on a canvas, and watch the live explanation update as you draw.'},
+ systemdocs:{n:'System docs',card:'',name:'',mk:'',empty:'',eyebrow:'SYSTEM DOCS',title:'How this app is wired',sub:'The cloud tables, browser stores and live checks that keep your projects and studios working.'}};
 const kindOf=p=>WCAT[p.kind]?p.kind:'site';
 function el_(id,type,x,y,over){return {id,type,...DEF[type],x,y,...(over||{})}}
 function tplFor(k,w,h){
@@ -1765,6 +1655,17 @@ function renderStudioHome(){
    const info=isChar?'Character':`${String(p.mode||'2D').toUpperCase()} map`;
    const when=new Date(p.updated||Date.now()).toLocaleDateString();
    return `<div class="pcard"><div class="th">${p.thumb?`<img alt="" src="${p.thumb}">`:''}</div><b>${esc(p.name||'Untitled')}</b><small>${info} \u00b7 ${when}</small><div class="acts"><a class="btn" href="${url}" data-last="${lastKey}" data-id="${esc(String(p.id))}">Open</a></div></div>`}).join('');
+ const none=$('#none');none.textContent=WCAT[wcat].empty;none.hidden=items.length>0;
+ $('#grid').querySelectorAll('[data-last]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem(a.dataset.last,a.dataset.id)}catch(_){}}));
+}
+function renderDiagramHome(){
+ const url='diagram.html',lastKey='diagramstudio:last';
+ const names={erd:'ERD',dfd:'DFD',uc:'Use case'};
+ const items=readStudio('diagramstudio:diagrams').sort((a,b)=>(b.updated||0)-(a.updated||0));
+ $('#grid').innerHTML=`<a class="pcard new" href="${url}?new=1"><span>+</span>${WCAT[wcat].card}</a>`+items.map(d=>{
+   const info=names[d.mode]||'ERD';
+   const when=new Date(d.updated||Date.now()).toLocaleDateString();
+   return `<div class="pcard"><div class="th">${d.thumb?`<img alt="" src="${d.thumb}">`:''}</div><b>${esc(d.name||'Untitled')}</b><small>${info} \u00b7 ${(d.nodes||[]).length} object${(d.nodes||[]).length===1?'':'s'} \u00b7 ${(d.edges||[]).length} link${(d.edges||[]).length===1?'':'s'} \u00b7 ${when}</small><div class="acts"><a class="btn" href="${url}?id=${encodeURIComponent(d.id)}" data-last="${lastKey}" data-id="${esc(String(d.id))}">Open</a></div></div>`}).join('');
  const none=$('#none');none.textContent=WCAT[wcat].empty;none.hidden=items.length>0;
  $('#grid').querySelectorAll('[data-last]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem(a.dataset.last,a.dataset.id)}catch(_){}}));
 }
@@ -1807,9 +1708,9 @@ async function runChecks(){
  try{localStorage.setItem('uivb:probe','1');localStorage.removeItem('uivb:probe')}catch(e){lsOk=false;lsErr=e.message||'unavailable'}
  add('Browser storage (localStorage)',lsOk?`Writable \u00b7 ${sysKB()} KB used`:'Not writable \u00b7 '+lsErr,lsOk?'ok':'err');
  if(lsOk){
-  add('Local stores',['dropform:projects','charlab:projects','mapstudio:maps'].map(k=>k+': '+sysItemCount(k)).join(' \u00b7 '),'ok');
+  add('Local stores',['dropform:projects','charlab:projects','mapstudio:maps','diagramstudio:diagrams'].map(k=>k+': '+sysItemCount(k)).join(' \u00b7 '),'ok');
   const bad=[];
-  [['dropform:projects','Dashboard designs'],['charlab:projects','Characters'],['mapstudio:maps','Maps']].forEach(([k,l])=>{const v=localStorage.getItem(k);if(v==null)return;const j=sysJSON(v);if(!Array.isArray(j))bad.push(l+' ('+k+')')});
+  [['dropform:projects','Dashboard designs'],['charlab:projects','Characters'],['mapstudio:maps','Maps'],['diagramstudio:diagrams','Diagrams']].forEach(([k,l])=>{const v=localStorage.getItem(k);if(v==null)return;const j=sysJSON(v);if(!Array.isArray(j))bad.push(l+' ('+k+')')});
   add('Local store integrity',bad.length?'Not a JSON array: '+bad.join(', '):'Every local store parses as a JSON array',bad.length?'err':'ok');
  }
  const cfg=window.UICLOUD_CONFIG||{},url=String(cfg.url||'').replace(/\/+$/,''),key=String(cfg.anonKey||''),on=!!(url&&key);
@@ -1834,456 +1735,18 @@ async function runChecks(){
  if(btn)btn.disabled=false;
 }
 if(document.getElementById('sysRun'))document.getElementById('sysRun').onclick=runChecks;
-/* ---------------- diagram builder: ERD / DFD ---------------- */
-const DGK={
- erd:{
-  entity:{n:'Entity',d:'A table of records',w:178,c:'ent'},
-  weak:{n:'Weak entity',d:'Only exists with its parent',w:178,c:'ent weak'},
-  rel:{n:'Relationship',d:'Joins two entities',w:150,c:'rel'},
-  attr:{n:'Attribute',d:'A field on its own',w:146,c:'attr'}
- },
- dfd:{
-  ext:{n:'External entity',d:'Person or system outside',w:170,c:'ext'},
-  proc:{n:'Process',d:'Turns input into output',w:168,c:'proc'},
-  store:{n:'Data store',d:'Where data rests',w:172,c:'store'}
- }
-};
-const DGSTORE='uivb:diagrams';
-const DG={mode:'erd',id:null,name:'Customer orders',nodes:[],edges:[],sel:null,selEdge:null,from:null,seq:1,ready:false,move:null,pal:null,ghost:null};
-function dgEsc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
-function dgDef(kind){return (DGK[DG.mode]||DGK.erd)[kind]||null}
-function dgNode(id){return DG.nodes.find(n=>n.id===id)||null}
-function dgFields(n){
- return String(n.fields||'').split('\n').map(s=>s.trim()).filter(Boolean).map(line=>{
-  const m=line.match(/^([*#]+)\s*(.+)$/);
-  if(!m)return {name:line,key:''};
-  const key=(m[1].indexOf('*')>=0&&m[1].indexOf('#')>=0)?'PK,FK':m[1].indexOf('*')>=0?'PK':'FK';
-  return {name:m[2].trim(),key};
- });
-}
-function dgMake(kind,x,y,over){
- const d=dgDef(kind)||{w:168};
- return {id:'n'+(DG.seq++),kind,name:'',x:Math.max(4,Math.round(x)),y:Math.max(4,Math.round(y)),w:d.w,fields:'',...(over||{})};
-}
-function dgSample(){
- DG.mode='erd';DG.id=null;DG.name='Customer orders';DG.nodes=[];DG.edges=[];DG.sel=null;DG.selEdge=null;DG.from=null;DG.seq=1;
- const wide=($('#dgCanvas')?$('#dgCanvas').clientWidth:640)>=420;
- const c=dgMake('entity',24,46,{name:'Customer',fields:'*id\nname\nemail'});
- const o=dgMake('entity',wide?226:24,wide?46:226,{name:'Order',fields:'*id\n#customer_id\ntotal'});
- DG.nodes=[c,o];
- DG.edges=[{id:'e'+(DG.seq++),from:c.id,to:o.id,card:'1:N',label:'places'}];
- DG.sel=c.id;
-}
-function dgAutoSpot(){
- const cv=$('#dgCanvas'),W=cv?cv.clientWidth:620;
- const cols=Math.max(1,Math.floor((W-30)/200));
- return {x:24+(DG.nodes.length%cols)*200,y:24+Math.floor(DG.nodes.length/cols)*150};
-}
-function dgAdd(kind,x,y,over){
- const cv=$('#dgCanvas');if(!cv||!dgDef(kind))return null;
- const w=(dgDef(kind)||{w:170}).w;
- const maxX=Math.max(6,cv.clientWidth-w-10),maxY=Math.max(6,cv.clientHeight-70);
- const def=dgDef(kind)||{n:'Object'};
- const label=def.n+' '+(DG.nodes.filter(o=>o.kind===kind).length+1);
- const n=dgMake(kind,Math.min(Math.max(6,x),maxX),Math.min(Math.max(6,y),maxY),{name:label,...(over||{})});
- DG.nodes.push(n);DG.sel=n.id;DG.selEdge=null;DG.from=null;dgRender();
- return n;
-}
-function dgRemoveNode(id){
- DG.nodes=DG.nodes.filter(n=>n.id!==id);
- DG.edges=DG.edges.filter(e=>e.from!==id&&e.to!==id);
- DG.sel=null;DG.selEdge=null;DG.from=null;dgRender();
-}
-function dgConnect(from,to){
- if(!from||!to||from===to)return;
- if(!dgNode(from)||!dgNode(to))return;
- if(DG.edges.some(e=>e.from===from&&e.to===to)){DG.from=null;dgPaintLink();return}
- DG.edges.push({id:'e'+(DG.seq++),from,to,card:DG.mode==='erd'?'1:N':'',label:''});
- DG.from=null;DG.sel=null;DG.selEdge=DG.edges[DG.edges.length-1].id;dgRender();
-}
-function dgPaintLink(){
- const msg=$('#dgLinkMsg');if(msg)msg.hidden=!DG.from;
- const cv=$('#dgCanvas');
- if(cv)cv.querySelectorAll('.dgn').forEach(el=>{
-  el.style.outline=DG.from===el.dataset.id?'2px dashed var(--acc)':'';
-  if(DG.from===el.dataset.id)el.style.outlineOffset='1px';
- });
-}
-function dgFieldsHtml(n){
- const f=dgFields(n);
- if(!f.length)return '<li class="dgmute">no fields yet</li>';
- return f.map(x=>'<li><span>'+dgEsc(x.name)+'</span>'+(x.key?'<em class="k">'+x.key+'</em>':'')+'</li>').join('');
-}
-function dgNodeHtml(n){
- const def=dgDef(n.kind)||{c:''};
- const cv=$('#dgCanvas'),maxX=Math.max(6,(cv?cv.clientWidth:640)-(n.w||170)-8);
- const left=Math.min(n.x,maxX);
- const fields=DG.mode==='erd'&&(n.kind==='entity'||n.kind==='weak'||n.kind==='attr');
- return '<div class="dgn '+(def.c||'')+(DG.sel===n.id?' on':'')+'" data-id="'+n.id+'" style="left:'+left+'px;top:'+n.y+'px;width:'+(n.w||170)+'px">'
-  +'<header><b>'+dgEsc(n.name||'Untitled')+'</b><button type="button" data-link="'+n.id+'" title="Connect this object to another" aria-label="Connect '+dgEsc(n.name||'object')+' to another object">&rarr;</button></header>'
-  +(fields?'<ul>'+dgFieldsHtml(n)+'</ul>':'')
-  +'</div>';
-}
-function dgRenderNodes(){
- const box=$('#dgNodes');if(!box)return;
- box.innerHTML=DG.nodes.map(dgNodeHtml).join('');
- const empty=$('#dgEmpty');if(empty)empty.hidden=DG.nodes.length>0;
- dgPaintLink();
-}
-function dgBox(el){return {x:el.offsetLeft,y:el.offsetTop,w:el.offsetWidth,h:el.offsetHeight}}
-function dgClip(box,dx,dy){
- const cx=box.x+box.w/2,cy=box.y+box.h/2;
- const sx=dx?box.w/2/Math.abs(dx):Infinity,sy=dy?box.h/2/Math.abs(dy):Infinity;
- const s=Math.min(sx,sy);
- if(!isFinite(s))return {x:cx,y:cy};
- return {x:cx+dx*s,y:cy+dy*s};
-}
-function dgKeepClear(){
- const lsvg=$('#dgLabels'),cv=$('#dgCanvas');if(!lsvg||!cv)return;
- const rects=Array.from(cv.querySelectorAll('#dgNodes .dgn')).map(dgBox);
- const cw=cv.clientWidth;
- Array.from(lsvg.querySelectorAll('text')).forEach(t=>{
-  const x=parseFloat(t.getAttribute('x'))||0;
-  let y=parseFloat(t.getAttribute('y'))||0;
-  for(let i=0;i<4;i++){
-   const bb=t.getBBox();
-   const hit=rects.find(r=>bb.x<r.x+r.w+3&&bb.x+bb.width>r.x-3&&bb.y<r.y+r.h+3&&bb.y+bb.height>r.y-3);
-   if(!hit)break;
-   const above=y<=hit.y+hit.h/2;
-   const ny=above?hit.y-4:hit.y+hit.h+bb.height+4;
-   y=(above&&ny-bb.height<1)?hit.y+hit.h+bb.height+4:ny;
-   t.setAttribute('y',y);
-  }
-  const bb=t.getBBox();
-  if(bb.x<3)t.setAttribute('x',x+(3-bb.x));
-  else if(bb.x+bb.width>cw-3)t.setAttribute('x',x-(bb.x+bb.width-cw+3));
-  if(bb.y<1)t.setAttribute('y',y+(1-bb.y));
- });
-}
-function dgFit(force){
- const cv=$('#dgCanvas');if(!cv)return false;
- const cw=cv.clientWidth,changed=DG.cw!==cw;
- DG.cw=cw;
- if(!DG.nodes.length)return false;
- if(!changed&&!force)return false;
- const boxes=DG.nodes.map(n=>{const el=cv.querySelector('#dgNodes .dgn[data-id="'+n.id+'"]');return el?{n,b:dgBox(el)}:null}).filter(Boolean);
- if(boxes.length<2)return false;
- let over=false;
- for(let i=0;i<boxes.length&&!over;i++)for(let j=i+1;j<boxes.length;j++){
-  const a=boxes[i].b,b=boxes[j].b;
-  if(a.x<b.x+b.w-2&&a.x+a.w>b.x+2&&a.y<b.y+b.h-2&&a.y+a.h>b.y+2){over=true;break}
- }
- if(!over)return false;
- const pad=24,gap=16,gapY=28;
- let x=pad,y=pad,bottom=y;
- boxes.forEach(({n,b})=>{
-  if(x+b.w>cw-10&&x>pad){x=pad;y=bottom+gapY}
-  n.x=x;n.y=y;x+=b.w+gap;bottom=Math.max(bottom,y+b.h);
- });
- const need=bottom+pad;
- if(need>cv.clientHeight)cv.style.minHeight=need+'px';
- return true;
-}
-function dgDraw(){
- const svg=$('#dgEdges');if(!svg)return;
- const cv=$('#dgCanvas');if(!cv)return;
- const cw=cv.clientWidth,ch=cv.clientHeight;
- svg.setAttribute('viewBox','0 0 '+cw+' '+ch);
- const out=['<defs><marker id="dgArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>'];
- const boxes=Array.from(cv.querySelectorAll('#dgNodes .dgn')).map(el=>({el,b:dgBox(el)}));
- const boxesOf=el=>{const f=boxes.find(o=>o.el===el);return f?f.b:dgBox(el)};
- const labels=[];
- DG.edges.forEach(e=>{
-  const a=$('#dgNodes .dgn[data-id="'+e.from+'"]'),b=$('#dgNodes .dgn[data-id="'+e.to+'"]');
-  if(!a||!b)return;
-  const A=boxesOf(a),B=boxesOf(b);
-  const dx=B.x+B.w/2-(A.x+A.w/2),dy=B.y+B.h/2-(A.y+A.h/2);
-  const p1=dgClip(A,dx,dy),p2=dgClip(B,-dx,-dy);
-  const len=Math.hypot(p2.x-p1.x,p2.y-p1.y)||1;
-  const g=Math.min(2.5,len/3),ux=(p2.x-p1.x)/len,uy=(p2.y-p1.y)/len;
-  const x1=p1.x+ux*g,y1=p1.y+uy*g,x2=p2.x-ux*g,y2=p2.y-uy*g;
-  const on=DG.selEdge===e.id?' on':'';
-  out.push('<line class="ln'+on+'" x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" marker-end="url(#dgArrow)"/>');
-  out.push('<line class="hit" data-edge="'+e.id+'" x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'"/>');
-  if(e.label){
-   const mx=(x1+x2)/2,my=(y1+y2)/2,nx=-uy,ny=ux;
-   const top=Math.min(A.y,B.y),bottom=Math.max(A.y+A.h,B.y+B.h);
-   const cand=[{x:mx+nx*13,y:my+ny*13},{x:mx-nx*13,y:my-ny*13},{x:mx,y:top-11},{x:mx,y:bottom+19}];
-   const tw=String(e.label).length*6.4+6,th=13;
-   const hitBox=p=>boxes.some(o=>p.x-tw/2<o.b.x+o.b.w+3&&p.x+tw/2>o.b.x-3&&p.y-th/2<o.b.y+o.b.h+3&&p.y+th/2>o.b.y-3);
-   const pick=cand.find(p=>!hitBox(p))||cand[0];
-   labels.push('<text x="'+pick.x.toFixed(1)+'" y="'+pick.y.toFixed(1)+'" text-anchor="middle" dominant-baseline="middle">'+dgEsc(e.label)+'</text>');
-  }
- });
- svg.innerHTML=out.join('');
- const lsvg=$('#dgLabels');
- if(lsvg){lsvg.setAttribute('viewBox','0 0 '+cw+' '+ch);lsvg.innerHTML=labels.join('');dgKeepClear()}
-}
-function dgInspector(){
- const el=$('#dgIns');if(!el)return;
- const ed=DG.edges.find(x=>x.id===DG.selEdge);
- if(ed){
-  const a=dgNode(ed.from),b=dgNode(ed.to);
-  el.innerHTML='<p class="dglab">Link</p><p style="margin:0;font-size:12px;line-height:1.5"><b>'+dgEsc(a?a.name:'?')+'</b> &rarr; <b>'+dgEsc(b?b.name:'?')+'</b></p>'
-   +'<label class="dglab" for="dgELabel">Label</label><input id="dgELabel" type="text" maxlength="40" value="'+dgEsc(ed.label||'')+'" placeholder="what travels">'
-   +(DG.mode==='erd'?'<label class="dglab" for="dgECard">Cardinality</label><select id="dgECard">'+['1:1','1:N','N:1','N:M','0..1:N'].map(c=>'<option'+(c===(ed.card||'')?' selected':'')+'>'+c+'</option>').join('')+'</select>':'')
-   +'<button class="btn sm" type="button" data-act="edge-del">Delete link</button>';
-  return;
- }
- const n=dgNode(DG.sel);
- if(!n){
-  el.innerHTML='<p class="dglab">How to draw</p><ol class="dghelp"><li>Drag an object from the palette onto the canvas.</li><li>Drag a placed object to move it.</li><li>Press the arrow button on an object, then click a second object to link them.</li><li>Click a link to name it and set its cardinality.</li></ol>';
-  return;
- }
- const def=dgDef(n.kind)||{n:'Object'};
- const showFields=DG.mode==='erd'&&(n.kind==='entity'||n.kind==='weak'||n.kind==='attr');
- const links=DG.edges.filter(e=>e.from===n.id||e.to===n.id);
- el.innerHTML='<p class="dglab">'+dgEsc(def.n)+' name</p><input id="dgNName" type="text" maxlength="40" value="'+dgEsc(n.name||'')+'" placeholder="Name">'
-  +(showFields?'<label class="dglab" for="dgNFields">Fields <span>* PK &middot; # FK</span></label><textarea id="dgNFields" spellcheck="false" placeholder="*id&#10;name">'+dgEsc(n.fields||'')+'</textarea>':'')
-  +'<p class="dglab">Links ('+links.length+')</p><ul class="dgls">'+(links.map(e=>{const o=dgNode(e.from===n.id?e.to:e.from);return '<li><b>'+dgEsc(o?o.name:'?')+'</b><button type="button" data-act="unlink" data-id="'+e.id+'" aria-label="Remove link">&times;</button></li>'}).join('')||'<li class="dgmute">No links yet</li>')+'</ul>'
-  +'<button class="btn sm" type="button" data-act="connect">Connect to&hellip;</button>'
-  +'<button class="btn sm" type="button" data-act="node-del">Delete object</button>';
-}
-function dgCardWords(l,r){
- const w=c=>c==='1'?'one':(c==='N'||c==='n'||c==='M')?'many':c==='0..1'?'zero or one':c;
- return w(l)+' to '+w(r);
-}
-function dgExplain(){
- const steps=$('#dgSteps'),issuesEl=$('#dgIssues'),badge=$('#dgBadge'),verdict=$('#dgVerdict');
- if(!steps)return;
- const lines=[],issues=[];
- const nm=n=>'<b>'+dgEsc(n&&n.name?n.name:'Untitled')+'</b>';
- if(!DG.nodes.length){
-  lines.push('The canvas is empty &mdash; drag an object from the palette to start.');
-  issues.push(['warn','Add at least one object so the diagram can be read.']);
- }else if(DG.mode==='erd'){
-  const ents=DG.nodes.filter(n=>n.kind==='entity'||n.kind==='weak');
-  const rels=DG.nodes.filter(n=>n.kind==='rel');
-  lines.push('This ERD describes '+nm({name:DG.name||'Untitled'})+' with '+ents.length+' entit'+(ents.length===1?'y':'ies')+(rels.length?', '+rels.length+' relationship object'+(rels.length===1?'':'s'):'')+' and '+DG.edges.length+' link'+(DG.edges.length===1?'':'s')+'.');
-  DG.nodes.forEach(n=>{
-   const f=dgFields(n),pk=f.filter(x=>x.key.indexOf('PK')>=0);
-   if(n.kind==='rel'){
-    lines.push(nm(n)+' is a relationship &mdash; it joins the entities linked to it.');
-   }else if(n.kind==='attr'){
-    lines.push(nm(n)+' is an attribute object'+(f.length?' holding '+f.map(x=>dgEsc(x.name)).join(', '):'')+'.');
-   }else{
-    lines.push(nm(n)+' holds '+(f.length?f.length+' field'+(f.length===1?'':'s'):'no fields yet')+(pk.length?' and is identified by '+pk.map(x=>'<code>'+dgEsc(x.name)+'</code>').join(', '):'')+'.');
-    if(!f.length)issues.push(['warn',nm(n)+' has no fields &mdash; add at least a primary key.']);
-    else if(!pk.length)issues.push(['warn',nm(n)+' has no primary key &mdash; mark a field with * .']);
-   }
-   if(!DG.edges.some(e=>e.from===n.id||e.to===n.id)&&DG.nodes.length>1)issues.push(['warn',nm(n)+' is not linked to anything yet.']);
-  });
-  DG.edges.forEach(e=>{
-   const a=dgNode(e.from),b=dgNode(e.to);if(!a||!b)return;
-   const parts=String(e.card||'1:N').split(':');
-   lines.push(nm(a)+' '+dgCardWords(parts[0],parts[1])+' '+nm(b)+(e.label?' through &ldquo;'+dgEsc(e.label)+'&rdquo;':'')+'.');
-   if(!e.label)issues.push(['warn','The link '+nm(a)+' &rarr; '+nm(b)+' has no label.']);
-  });
- }else{
-  const exts=DG.nodes.filter(n=>n.kind==='ext'),procs=DG.nodes.filter(n=>n.kind==='proc'),stores=DG.nodes.filter(n=>n.kind==='store');
-  lines.push('This DFD describes '+nm({name:DG.name||'Untitled'})+' with '+exts.length+' external entit'+(exts.length===1?'y':'ies')+', '+procs.length+' process'+(procs.length===1?'':'es')+', '+stores.length+' data store'+(stores.length===1?'':'s')+' and '+DG.edges.length+' flow'+(DG.edges.length===1?'':'s')+'.');
-  DG.edges.forEach(e=>{
-   const a=dgNode(e.from),b=dgNode(e.to);if(!a||!b)return;
-   const verb=b.kind==='store'?'writes to':b.kind==='ext'?'returns data to':a.kind==='store'?'reads from the store and passes':'passes';
-   lines.push(nm(a)+' '+verb+' '+nm(b)+(e.label?' carrying &ldquo;'+dgEsc(e.label)+'&rdquo;':' without a data name')+'.');
-   if(!e.label)issues.push(['warn','The flow '+nm(a)+' &rarr; '+nm(b)+' has no data label.']);
-  });
-  DG.nodes.forEach(n=>{
-   const inc=DG.edges.filter(e=>e.to===n.id),out=DG.edges.filter(e=>e.from===n.id);
-   if(n.kind==='proc'){
-    if(!inc.length)issues.push(['warn','Process '+nm(n)+' has no input flow.']);
-    if(!out.length)issues.push(['warn','Process '+nm(n)+' has no output flow.']);
-   }else if(!inc.length&&!out.length)issues.push(['warn',nm(n)+' is not connected to any flow.']);
-  });
- }
- if(!issues.length&&DG.nodes.length)lines.push('Every object is connected and nothing is missing, so the diagram can be read end to end.');
- steps.innerHTML=lines.map(t=>'<li>'+t+'</li>').join('');
- issuesEl.innerHTML=issues.length?issues.map(x=>'<li><span class="badge warn">check</span><span>'+x[1]+'</span></li>').join(''):'<li><span class="badge ok">ok</span><span>No problems found on the canvas.</span></li>';
- if(badge){badge.className='badge '+(issues.length?'warn':'ok');badge.textContent=issues.length?issues.length+' to review':'all good'}
- if(verdict)verdict.innerHTML=issues.length?issues.length+' thing'+(issues.length===1?'':'s')+' to review. Add the missing key, label or flow and this list shrinks.':'Reads cleanly: '+DG.nodes.length+' object'+(DG.nodes.length===1?'':'s')+' and '+DG.edges.length+' link'+(DG.edges.length===1?'':'s')+'.';
-}
-function dgListSaved(){
- const sel=$('#dgSaved');if(!sel)return;
- let list=[];try{list=JSON.parse(localStorage.getItem(DGSTORE)||'[]')}catch(_){}
- if(!Array.isArray(list))list=[];
- sel.innerHTML='<option value="">Saved diagrams ('+list.length+')</option>'+list.map(d=>'<option value="'+dgEsc(d.id)+'">'+dgEsc(d.name||'Untitled')+' &middot; '+String(d.mode||'erd').toUpperCase()+'</option>').join('');
- if(DG.id)sel.value=DG.id;
-}
-function dgSave(){
- let list=[];try{list=JSON.parse(localStorage.getItem(DGSTORE)||'[]')}catch(_){}
- if(!Array.isArray(list))list=[];
- const rec={id:DG.id||('d'+Date.now().toString(36)),name:DG.name||'Untitled diagram',mode:DG.mode,nodes:DG.nodes.map(n=>({...n})),edges:DG.edges.map(e=>({...e})),updated:Date.now()};
- const i=list.findIndex(d=>d.id===rec.id);
- if(i>=0)list[i]=rec;else list.unshift(rec);
- try{localStorage.setItem(DGSTORE,JSON.stringify(list.slice(0,40)))}catch(e){toast('Could not save: '+(e.message||e));return}
- DG.id=rec.id;dgListSaved();dgExplain();toast('Diagram saved');
-}
-function dgLoad(id){
- let list=[];try{list=JSON.parse(localStorage.getItem(DGSTORE)||'[]')}catch(_){}
- if(!Array.isArray(list))return;
- const d=list.find(x=>x.id===id);if(!d)return;
- DG.mode=d.mode==='dfd'?'dfd':'erd';DG.id=d.id;DG.name=d.name||'Untitled diagram';
- DG.nodes=(d.nodes||[]).map(n=>({...n}));DG.edges=(d.edges||[]).map(e=>({...e}));
- const ids=DG.nodes.concat(DG.edges).map(o=>parseInt(String(o.id).replace(/\D/g,''),10)||0);
- DG.seq=(ids.length?Math.max.apply(null,ids):0)+1;
- DG.sel=null;DG.selEdge=null;DG.from=null;DG.fit=true;dgRender();
-}
-function dgNew(){
- DG.id=null;DG.name=DG.mode==='erd'?'Untitled ERD':'Untitled DFD';DG.nodes=[];DG.edges=[];
- DG.sel=null;DG.selEdge=null;DG.from=null;DG.seq=1;dgRender();
-}
-function dgDelete(){
- if(!DG.id){toast('Open a saved diagram to delete it');return}
- let list=[];try{list=JSON.parse(localStorage.getItem(DGSTORE)||'[]')}catch(_){}
- list=(Array.isArray(list)?list:[]).filter(d=>d.id!==DG.id);
- try{localStorage.setItem(DGSTORE,JSON.stringify(list))}catch(_){}
- DG.id=null;dgListSaved();toast('Diagram deleted');
-}
-function dgRender(){
- if(!$('#dgCanvas'))return;
- const name=$('#dgName');if(name&&name!==document.activeElement)name.value=DG.name;
- document.querySelectorAll('#sysdocs .dgseg button').forEach(b=>b.classList.toggle('on',b.dataset.mode===DG.mode));
- dgRenderNodes();
- if(dgFit(!!DG.fit))dgRenderNodes();
- DG.fit=false;
- dgDraw();dgInspector();dgExplain();dgListSaved();dgPaintLink();
- const pal=$('#dgPal');
- if(pal)pal.innerHTML=Object.keys(DGK[DG.mode]).map(k=>'<button class="dgitem" type="button" data-kind="'+k+'"><b>'+DGK[DG.mode][k].n+'</b><small>'+DGK[DG.mode][k].d+'</small></button>').join('');
-}
-function dgBoot(){
- if(!$('#dgCanvas'))return;
- if(DG.ready){dgRender();return}
- DG.ready=true;dgSample();
- $('#dgName').oninput=e=>{DG.name=e.target.value;dgExplain()};
- $('#dgSave').onclick=dgSave;
- $('#dgNew').onclick=dgNew;
- $('#dgDel').onclick=dgDelete;
- $('#dgSaved').onchange=e=>{if(e.target.value)dgLoad(e.target.value)};
- $('#dgFlow').onchange=e=>{const s=$('#dgEdges');if(s)s.classList.toggle('flow',e.target.checked)};
- const s=$('#dgEdges');if(s)s.classList.toggle('flow',$('#dgFlow').checked);
- $('#dgCopy').onclick=()=>{
-  const text=DG.name+' ('+DG.mode.toUpperCase()+')\n\n'+Array.from($('#dgSteps').children).map(li=>'- '+li.textContent).join('\n');
-  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(()=>toast('Explanation copied')).catch(()=>toast('Copy is not available here'));
-  else toast('Copy is not available here');
- };
- document.querySelectorAll('#sysdocs .dgseg button').forEach(b=>{
-  b.onclick=()=>{
-   const m=b.dataset.mode;if(m===DG.mode)return;
-   DG.mode=m;DG.nodes=[];DG.edges=[];DG.sel=null;DG.selEdge=null;DG.from=null;DG.id=null;DG.seq=1;
-   DG.name=m==='erd'?'Untitled ERD':'Untitled DFD';dgRender();
-  };
- });
- const pal=$('#dgPal');
- pal.addEventListener('pointerdown',e=>{
-  const it=e.target.closest('.dgitem');if(!it||e.button!==0)return;
-  DG.pal={kind:it.dataset.kind,x:e.clientX,y:e.clientY};
-  e.preventDefault();
- });
- pal.addEventListener('keydown',e=>{
-  if(e.key!=='Enter'&&e.key!==' ')return;
-  const it=e.target.closest('.dgitem');if(!it)return;
-  e.preventDefault();
-  const s=dgAutoSpot();dgAdd(it.dataset.kind,s.x,s.y);
- });
- const ins=$('#dgIns');
- ins.addEventListener('input',e=>{
-  const n=dgNode(DG.sel);
-  if(e.target.id==='dgNName'&&n){n.name=e.target.value;const h=$('#dgNodes .dgn[data-id="'+n.id+'"] b');if(h)h.textContent=n.name||'Untitled';dgExplain();}
-  if(e.target.id==='dgNFields'&&n){n.fields=e.target.value;dgRenderNodes();dgDraw();dgExplain();}
-  if(e.target.id==='dgELabel'){const ed=DG.edges.find(x=>x.id===DG.selEdge);if(ed){ed.label=e.target.value;dgDraw();dgExplain();}}
- });
- ins.addEventListener('change',e=>{
-  if(e.target.id==='dgECard'){const ed=DG.edges.find(x=>x.id===DG.selEdge);if(ed){ed.card=e.target.value;dgDraw();dgExplain();}}
- });
- ins.addEventListener('click',e=>{
-  const b=e.target.closest('[data-act]');if(!b)return;
-  const act=b.dataset.act,n=dgNode(DG.sel);
-  if(act==='connect'&&n){DG.from=n.id;DG.selEdge=null;dgPaintLink();}
-  if(act==='node-del'&&n)dgRemoveNode(n.id);
-  if(act==='edge-del'){DG.edges=DG.edges.filter(x=>x.id!==DG.selEdge);DG.selEdge=null;dgRender();}
-  if(act==='unlink'){DG.edges=DG.edges.filter(x=>x.id!==b.dataset.id);dgRender();}
- });
- const cv=$('#dgCanvas');
- cv.addEventListener('click',e=>{
-  const lk=e.target.closest('[data-link]');
-  if(lk){DG.from=lk.dataset.link;DG.sel=lk.dataset.link;DG.selEdge=null;dgInspector();dgExplain();dgPaintLink();return}
-  const hit=e.target.closest('[data-edge]');
-  if(hit){DG.selEdge=hit.dataset.edge;DG.sel=null;DG.from=null;dgRender();return}
-  const nd=e.target.closest('.dgn');
-  if(nd){
-   if(DG.from&&DG.from!==nd.dataset.id){dgConnect(DG.from,nd.dataset.id);return}
-   DG.sel=nd.dataset.id;DG.selEdge=null;DG.from=null;dgRender();return;
-  }
-  if(DG.from||DG.sel||DG.selEdge){DG.from=null;DG.sel=null;DG.selEdge=null;dgRender();}
- });
- cv.addEventListener('pointerdown',e=>{
-  const nd=e.target.closest('.dgn');
-  if(!nd||e.target.closest('button')||e.button!==0)return;
-  const n=dgNode(nd.dataset.id);if(!n)return;
-  if(DG.from&&DG.from!==n.id)return;
-  const r=cv.getBoundingClientRect();
-  DG.sel=n.id;DG.selEdge=null;
-  dgInspector();dgExplain();
-  cv.querySelectorAll('.dgn').forEach(x=>x.classList.toggle('on',x===nd));
-  DG.move={n,el:nd,dx:e.clientX-r.left-n.x,dy:e.clientY-r.top-n.y,r};
-  e.preventDefault();
- });
- window.addEventListener('pointermove',e=>{
-  if(DG.move){
-   const r=DG.move.r,n=DG.move.n,el=DG.move.el;
-   const maxX=Math.max(4,r.width-el.offsetWidth-6),maxY=Math.max(4,r.height-el.offsetHeight-6);
-   n.x=Math.min(Math.max(4,e.clientX-r.left-DG.move.dx),maxX);
-   n.y=Math.min(Math.max(4,e.clientY-r.top-DG.move.dy),maxY);
-   el.style.left=n.x+'px';el.style.top=n.y+'px';
-   dgDraw();
-   return;
-  }
-  if(DG.pal){
-   if(!DG.ghost&&Math.abs(e.clientX-DG.pal.x)+Math.abs(e.clientY-DG.pal.y)>6){
-    const g=document.createElement('div');g.id='dgGhost';g.textContent=(dgDef(DG.pal.kind)||{n:'Object'}).n;
-    document.body.appendChild(g);DG.ghost=g;
-   }
-   if(DG.ghost){DG.ghost.style.left=e.clientX+'px';DG.ghost.style.top=e.clientY+'px'}
-  }
- });
- window.addEventListener('pointerup',e=>{
-  if(DG.move){DG.move=null;dgExplain();return}
-  if(!DG.pal)return;
-  const p=DG.pal;DG.pal=null;
-  const dropped=!!DG.ghost;
-  if(DG.ghost){DG.ghost.remove();DG.ghost=null}
-  const r=cv.getBoundingClientRect();
-  if(dropped&&e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom){
-   const w=(dgDef(p.kind)||{w:170}).w;
-   dgAdd(p.kind,e.clientX-r.left-w/2,e.clientY-r.top-16);
-  }else if(!dropped){
-   const s=dgAutoSpot();dgAdd(p.kind,s.x,s.y);
-  }
- });
- let rzT=0;
- window.addEventListener('resize',()=>{
-  if(!$('#sysdocs')||$('#sysdocs').hidden)return;
-  clearTimeout(rzT);
-  rzT=setTimeout(()=>{
-   if(!$('#dgCanvas'))return;
-   dgRenderNodes();
-   if(dgFit())dgRenderNodes();
-   dgDraw();dgPaintLink();
-  },160);
- });
- DG.cw=($('#dgCanvas')||{clientWidth:0}).clientWidth;
- dgRender();
-}
 function home(){show('home');
  const meta=WCAT[wcat];
- $('#heroEyebrow').textContent=meta.eyebrow;$('#heroTitle').textContent=meta.title;$('#heroSub').textContent=meta.sub;$('#newh').textContent=meta.card;
- const studio=wcat==='charstudio'||wcat==='mapstudio',schema=wcat==='schema';
+ $('#heroEyebrow').textContent=meta.eyebrow;$('#heroTitle').textContent=meta.title;$('#heroSub').textContent=meta.sub;$('#newh').textContent=meta.card||'Make a website';
+ if($('#newh'))$('#newh').hidden=(wcat==='systemdocs');
+ const studio=wcat==='charstudio'||wcat==='mapstudio',schema=wcat==='schema',docsPage=wcat==='systemdocs';
  const actStudio=$('#actStudio'),actFile=$('#actFile');
- if(actStudio)actStudio.hidden=studio||schema;
- if(actFile)actFile.hidden=studio||schema;
- const docs=$('#sysdocs');if(docs)docs.hidden=!schema;
- $('#grid').hidden=schema;
- if(schema){$('#none').hidden=true;dgBoot();runChecks();return}
+ if(actStudio)actStudio.hidden=studio||schema||docsPage;
+ if(actFile)actFile.hidden=studio||schema||docsPage;
+ const docs=$('#sysdocs');if(docs)docs.hidden=!docsPage;
+ $('#grid').hidden=docsPage;
+ if(docsPage){$('#none').hidden=true;runChecks();return}
+ if(schema){$('#none').hidden=true;renderDiagramHome();return}
  if(studio){renderStudioHome();return}
  const list=mem.filter(p=>kindOf(p)===wcat);
  $('#grid').innerHTML=`<button class="pcard new" id="newc"><span>+</span>${WCAT[wcat].card}</button>`+list.slice().sort((a,b)=>b.updated-a.updated).map(p=>{const c=WCAT[kindOf(p)],dv=DEV[p.device]||DEV.pc;return `<div class="pcard"><div class="th">${p.thumb?`<img alt="" src="${p.thumb}">`:''}</div><b>${esc(p.name)}</b><small>${c.n} \u00b7 ${dv.n}, ${new Date(p.updated).toLocaleDateString()}</small><div class="acts"><button class="btn" data-o="${p.id}">Open</button><button class="btn" data-d="${p.id}">Delete</button></div></div>`}).join('');
@@ -2309,7 +1772,7 @@ $('#devs').onclick=e=>{const o=e.target.closest('.opt');if(!o)return;dev=o.datas
 $('#dcancel').onclick=()=>dm.classList.remove('on');
 dm.onclick=e=>{if(e.target==dm)dm.classList.remove('on')};
 $('#mk').onclick=()=>{dm.classList.remove('on');const[w,h]=$('#dsz').value.split('x').map(Number);newProj($('#dn').value.trim()||WCAT[wcat].name,dev,tplFor(wcat,w,h),{w,h,rot:!!(drot&&ROT[dev]),kind:wcat})};
-$('#newh').onclick=()=>{if(wcat==='charstudio'){location.href='studio.html';return}if(wcat==='mapstudio'){location.href='game.html';return}if(wcat==='schema'){dgNew();return}openNew()};
+$('#newh').onclick=()=>{if(wcat==='charstudio'){location.href='studio.html';return}if(wcat==='mapstudio'){location.href='game.html';return}if(wcat==='schema'){location.href='diagram.html?new=1';return}openNew()};
 $('#grid').onclick=e=>{const o=e.target.closest('[data-o]'),d=e.target.closest('[data-d]');
  if(e.target.closest('#newc'))return openNew();
  if(o)openProj(mem.find(p=>p.id==o.dataset.o));
