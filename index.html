@@ -590,6 +590,56 @@ aside input[type=range]{height:38px}
  header .sp{display:none}
 }
 </style>
+<style>
+#sysdocs[hidden]{display:none}
+#sysdocs{margin-top:26px;display:grid;gap:18px}
+#sysdocs .dcard{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 5px 18px rgba(26,36,66,.05)}
+#sysdocs h2{font-size:19px;margin:0 0 6px;letter-spacing:-.01em;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+#sysdocs h2 .btn{margin-left:auto}
+#sysdocs .dnote{color:var(--mut);font-size:13px;line-height:1.65;margin:8px 0 0}
+#sysdocs .dnote b{color:var(--ink)}
+#sysdocs code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;background:color-mix(in srgb,var(--ink) 6%,transparent);padding:1px 5px;border-radius:5px;color:var(--ink)}
+#sysdocs .flow{display:grid;grid-template-columns:1fr 30px 1.2fr 30px 1.35fr;gap:10px;align-items:center;margin:18px 0 4px}
+#sysdocs .fcol{display:grid;gap:10px}
+#sysdocs .farrow{text-align:center;color:var(--mut);font-size:22px;line-height:1}
+#sysdocs .node{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--bg);display:grid;gap:3px;min-width:0}
+#sysdocs .node b{font-size:13.5px}
+#sysdocs .node small{color:var(--mut);font-size:11.5px;line-height:1.5;overflow-wrap:anywhere}
+#sysdocs .node.actor{border-color:color-mix(in srgb,var(--acc) 38%,var(--line))}
+#sysdocs .node.proc{border-left:3px solid var(--acc)}
+#sysdocs .node.store{border-left:3px solid #4f7df3}
+#sysdocs .dlist{margin:16px 0 0;padding-left:20px;display:grid;gap:8px;color:var(--mut);font-size:13px;line-height:1.6}
+#sysdocs .dlist b{color:var(--ink)}
+#sysdocs .erd{margin-top:14px;display:grid;gap:12px}
+#sysdocs .erow{display:grid;grid-template-columns:1.1fr 92px 1.1fr;gap:10px;align-items:center}
+#sysdocs .ent{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+#sysdocs .ent h3{font-size:13.5px;margin:0 0 8px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+#sysdocs .ent ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+#sysdocs .ent li{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;color:var(--mut)}
+#sysdocs .ent .tag{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 7px}
+#sysdocs .rel{text-align:center;font-size:11px;color:var(--mut)}
+#sysdocs .rel b{display:block;font-size:13px;color:var(--ink);margin-bottom:2px}
+#sysdocs .dtab{width:100%;border-collapse:collapse;margin-top:12px;font-size:12.5px}
+#sysdocs .dtab th,#sysdocs .dtab td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+#sysdocs .dtab thead th{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);font-weight:700}
+#sysdocs .dtab tr.tgroup th{background:color-mix(in srgb,var(--acc) 8%,transparent);font-size:11.5px;letter-spacing:.03em;color:var(--ink);font-weight:700}
+#sysdocs .badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--line);white-space:nowrap}
+#sysdocs .badge.ok{color:#116b41;background:#e6f8ee;border-color:#bfe9d1}
+#sysdocs .badge.warn{color:#7d5200;background:#fff6e2;border-color:#f0dcae}
+#sysdocs .badge.err{color:#a02119;background:#fdeceb;border-color:#f5c8c3}
+[data-theme="dark"] #sysdocs .badge.ok{color:#82e6b1;background:rgba(44,180,110,.16);border-color:rgba(90,220,150,.3)}
+[data-theme="dark"] #sysdocs .badge.warn{color:#f3cd7f;background:rgba(220,170,60,.16);border-color:rgba(240,200,110,.3)}
+[data-theme="dark"] #sysdocs .badge.err{color:#ff9d94;background:rgba(230,80,70,.16);border-color:rgba(250,130,120,.3)}
+#sysdocs .status td:first-child{font-weight:600}
+#sysdocs details summary{cursor:pointer;font-weight:700;font-size:13px;margin-top:14px}
+#sysdocs pre{margin:12px 0 0;overflow:auto;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:11.5px;line-height:1.6}
+@media(max-width:780px){
+ #sysdocs .flow{grid-template-columns:1fr}
+ #sysdocs .farrow{transform:rotate(90deg);padding:2px 0}
+ #sysdocs .erow{grid-template-columns:1fr}
+ #sysdocs .rel{padding:2px 0}
+}
+</style>
 </head>
 <body data-sheet="">
 <header>
@@ -632,6 +682,7 @@ aside input[type=range]{height:38px}
     <button class="snav on" type="button" data-k="site">Website</button>
     <button class="snav" type="button" data-k="charstudio">Character studio</button>
     <button class="snav" type="button" data-k="mapstudio">Map studio</button>
+    <button class="snav" type="button" data-k="schema">System docs</button>
     <div class="sidefoot" id="sidefoot" hidden>
       <button class="snav" type="button" id="sideSwitch">Switch account</button>
       <button class="snav" type="button" id="sideLogout">Log out</button>
@@ -643,6 +694,125 @@ aside input[type=range]{height:38px}
   </div>
   <p id="none" class="hint">No projects yet. Make your first website.</p>
   <div id="grid"></div>
+  <div id="sysdocs" hidden>
+    <div class="dcard">
+      <h2>Data flow — DFD level 1</h2>
+      <p class="dnote">How a click, a saved character or a shared project moves through the app. Everything works locally first; the cloud path only runs when an account is signed in.</p>
+      <div class="flow">
+        <div class="fcol"><div class="node actor"><b>User / guest</b><small>Browser on any device</small></div></div>
+        <div class="farrow">&#8594;</div>
+        <div class="fcol">
+          <div class="node proc"><b>1.0 Dashboard</b><small>index.html &middot; cloud.js</small></div>
+          <div class="node proc"><b>2.0 Character studio</b><small>studio.html &middot; studio.js</small></div>
+          <div class="node proc"><b>3.0 Map studio &amp; runtime</b><small>game.html &middot; game.js</small></div>
+        </div>
+        <div class="farrow">&#8646;</div>
+        <div class="fcol">
+          <div class="node store"><b>D1 &nbsp;localStorage</b><small>dropform:projects &middot; charlab:projects &middot; mapstudio:maps</small></div>
+          <div class="node store"><b>D2 &nbsp;Supabase Postgres</b><small>public.projects &middot; public.project_members</small></div>
+          <div class="node store"><b>D3 &nbsp;Supabase Auth</b><small>auth.users (managed by Supabase)</small></div>
+        </div>
+      </div>
+      <ul class="dlist">
+        <li><b>1.0 Dashboard</b> reads and writes D1 dashboard designs, renders the project cards, and calls 4.0 for sign-in and sharing.</li>
+        <li><b>2.0 Character studio</b> reads and writes D1 characters, then exports a character as PNG, sprite sheet or JSON.</li>
+        <li><b>3.0 Map studio &amp; runtime</b> reads characters from D1, builds and saves maps in D1, and runs the 2D / 3D play loop in the browser.</li>
+        <li><b>4.0 Cloud sync</b> (inside cloud.js) sends the signed-in user's projects to D2 through the Supabase REST API and authenticates against D3. Row-level security decides which rows a request may see.</li>
+        <li><b>Nothing is deleted on sign-out</b>: local work stays in D1, cloud rows stay in D2. The schema in D2 is created once by running <code>supabase/schema.sql</code>.</li>
+      </ul>
+    </div>
+
+    <div class="dcard">
+      <h2>Entity relationship — ERD</h2>
+      <p class="dnote">Two application tables in Postgres, both referencing Supabase's own <code>auth.users</code>. A project has one owner; any number of accounts can be invited as members.</p>
+      <div class="erd">
+        <div class="erow">
+          <div class="ent"><h3>auth.users <span class="tag">Supabase</span></h3><ul><li><code>id</code><span>uuid &middot; PK</span></li><li><code>email</code><span>text</span></li><li><code>raw_user_meta_data</code><span>jsonb</span></li></ul></div>
+          <div class="rel"><b>1 &#8594; N</b>owner</div>
+          <div class="ent"><h3>public.projects</h3><ul><li><code>id</code><span>text &middot; PK</span></li><li><code>owner</code><span>uuid &middot; FK</span></li><li><code>name</code><span>text</span></li><li><code>device</code><span>text</span></li><li><code>data</code><span>jsonb</span></li><li><code>updated_at</code><span>timestamptz</span></li></ul></div>
+        </div>
+        <div class="erow">
+          <div class="ent"><h3>public.projects</h3><ul><li><code>id</code><span>text &middot; PK</span></li></ul></div>
+          <div class="rel"><b>1 &#8594; N</b>project_id</div>
+          <div class="ent"><h3>public.project_members</h3><ul><li><code>project_id</code><span>text &middot; PK, FK</span></li><li><code>user_id</code><span>uuid &middot; PK, FK</span></li><li><code>role</code><span>edit | view</span></li><li><code>added_at</code><span>timestamptz</span></li></ul></div>
+        </div>
+        <div class="erow">
+          <div class="ent"><h3>auth.users</h3><ul><li><code>id</code><span>uuid &middot; PK</span></li></ul></div>
+          <div class="rel"><b>1 &#8594; N</b>user_id</div>
+          <div class="ent"><h3>public.project_members</h3><ul><li><code>project_id</code> + <code>user_id</code><span>composite PK</span></li><li><code>role</code><span>check (edit, view)</span></li></ul></div>
+        </div>
+      </div>
+      <p class="dnote"><b>Delete rules:</b> deleting an account cascades to its projects and memberships; deleting a project cascades to its memberships. Indexes: <code>projects_owner_idx</code>, <code>project_members_user_idx</code>.</p>
+    </div>
+
+    <div class="dcard">
+      <h2>Tables and columns</h2>
+      <table class="dtab">
+        <thead><tr><th>Column</th><th>Type</th><th>Key / rule</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr class="tgroup"><th colspan="4">public.projects — one row per saved design</th></tr>
+          <tr><td><code>id</code></td><td>text</td><td>primary key</td><td>Project id shared by the browser and the cloud copy</td></tr>
+          <tr><td><code>owner</code></td><td>uuid</td><td>FK &rarr; auth.users.id, cascade delete</td><td>Account that created the design</td></tr>
+          <tr><td><code>name</code></td><td>text</td><td>not null, default 'Untitled'</td><td>Card title</td></tr>
+          <tr><td><code>device</code></td><td>text</td><td>not null, default 'pc'</td><td>Phone / tablet / computer canvas</td></tr>
+          <tr><td><code>data</code></td><td>jsonb</td><td>not null, default '{}'</td><td>The full design document (elements, pages, styles)</td></tr>
+          <tr><td><code>updated_at</code></td><td>timestamptz</td><td>not null, default now()</td><td>Sorting for the newest projects first</td></tr>
+          <tr class="tgroup"><th colspan="4">public.project_members — who else can open a project</th></tr>
+          <tr><td><code>project_id</code></td><td>text</td><td>PK part, FK &rarr; projects.id, cascade delete</td><td>Project being shared</td></tr>
+          <tr><td><code>user_id</code></td><td>uuid</td><td>PK part, FK &rarr; auth.users.id, cascade delete</td><td>Invited account</td></tr>
+          <tr><td><code>role</code></td><td>text</td><td>check (edit, view), default 'edit'</td><td>Edit or read-only access</td></tr>
+          <tr><td><code>added_at</code></td><td>timestamptz</td><td>not null, default now()</td><td>Member list ordering</td></tr>
+          <tr class="tgroup"><th colspan="4">Browser stores (localStorage) — used when signed out or offline</th></tr>
+          <tr><td><code>dropform:projects</code></td><td>JSON array</td><td>written by index.html</td><td>Dashboard designs, including thumbnails</td></tr>
+          <tr><td><code>charlab:projects</code></td><td>JSON array</td><td>written by studio.js</td><td>Characters, animations, frames</td></tr>
+          <tr><td><code>mapstudio:maps</code></td><td>JSON array</td><td>written by game.js</td><td>Maps, objects, spawn point, key bindings</td></tr>
+          <tr><td><code>charlab:last</code> / <code>mapstudio:last</code></td><td>string</td><td>last opened id</td><td>Reopens the project you were editing</td></tr>
+          <tr><td><code>uivb:theme</code> / <code>dropform:user</code></td><td>string</td><td>preference</td><td>Dark / light choice and guest display name</td></tr>
+        </tbody>
+      </table>
+      <p class="dnote">Row-level security is on for both tables. <code>projects_read</code> allows owners and members, <code>projects_insert</code> only the owner, <code>projects_update</code> owners and edit members, <code>projects_delete</code> only the owner. Members can read a membership row if it is theirs or if they own the project, and can remove themselves. SQL helpers: <code>is_project_member()</code>, <code>can_edit_project()</code>, <code>share_project()</code>, <code>list_project_members()</code>.</p>
+    </div>
+
+    <div class="dcard">
+      <h2>Table creation</h2>
+      <p class="dnote">The tables are not created automatically. Run <code>supabase/schema.sql</code> once in Supabase &rarr; SQL Editor, then use the checks below to confirm the tables and functions exist.</p>
+      <details>
+        <summary>Show the CREATE TABLE statements</summary>
+        <pre>create table if not exists public.projects (
+  id         text primary key,
+  owner      uuid not null references auth.users (id) on delete cascade,
+  name       text not null default 'Untitled',
+  device     text not null default 'pc',
+  data       jsonb not null default '{}'::jsonb,
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.project_members (
+  project_id text not null references public.projects (id) on delete cascade,
+  user_id    uuid not null references auth.users (id) on delete cascade,
+  role       text not null default 'edit' check (role in ('edit', 'view')),
+  added_at   timestamptz not null default now(),
+  primary key (project_id, user_id)
+);
+
+create index if not exists project_members_user_idx on public.project_members (user_id);
+create index if not exists projects_owner_idx        on public.projects (owner);
+
+alter table public.projects        enable row level security;
+alter table public.project_members enable row level security;</pre>
+      </details>
+    </div>
+
+    <div class="dcard">
+      <h2>Live check <button class="btn sm" id="sysRun" type="button">Run again</button></h2>
+      <p class="dnote">Read-only probes: the cloud tables are queried with the public anon key, so row counts reflect what this session is allowed to see. No data is written.</p>
+      <table class="dtab status">
+        <thead><tr><th>Check</th><th>Result</th><th>Status</th></tr></thead>
+        <tbody id="sysRows"><tr><td colspan="3">Opening checks&hellip;</td></tr></tbody>
+      </table>
+      <p class="dnote" id="sysNote"></p>
+    </div>
+  </div>
 </section>
 <div id="editor" hidden>
 <main>
@@ -1509,7 +1679,8 @@ const WCAT={
  gameiso:{n:'Isometric game',card:'Make an isometric game',name:'My isometric game',mk:'Create game',empty:'No isometric games yet. Make your first one.',eyebrow:'ISOMETRIC WORKSPACE',title:'Your isometric games',sub:'Design isometric scenes with blocks, coins and ground for a top-down adventure.'},
  char:{n:'Character',card:'Make a character',name:'My character',mk:'Create character',empty:'No characters yet. Every part on the canvas can be dragged.',eyebrow:'CHARACTER WORKSPACE',title:'Your characters',sub:'Create a character here, then animate it in Character studio and use it in your games.'},
  charstudio:{n:'Character studio',card:'Make a character',name:'My character',mk:'Create character',empty:'No characters yet. Open Character studio to make your first one.',eyebrow:'CHARACTER WORKSPACE',title:'Your characters',sub:'Create a character, pose it and animate it by hand in Character studio, then use it in your games.'},
- mapstudio:{n:'Map studio',card:'Make a map',name:'My map',mk:'Create map',empty:'No maps yet. Open Map studio to build your first one.',eyebrow:'MAP WORKSPACE',title:'Your maps',sub:'Build 2D and 3D maps, place coins, doors and enemies, then play them in Map studio.'}};
+ mapstudio:{n:'Map studio',card:'Make a map',name:'My map',mk:'Create map',empty:'No maps yet. Open Map studio to build your first one.',eyebrow:'MAP WORKSPACE',title:'Your maps',sub:'Build 2D and 3D maps, place coins, doors and enemies, then play them in Map studio.'},
+ schema:{n:'System docs',card:'Run checks',name:'',mk:'',empty:'',eyebrow:'SYSTEM DOCUMENTATION',title:'How the system works',sub:'Data flow, database tables and relationships, plus a live check that the Supabase tables and functions are set up correctly.'}};
 const kindOf=p=>WCAT[p.kind]?p.kind:'site';
 function el_(id,type,x,y,over){return {id,type,...DEF[type],x,y,...(over||{})}}
 function tplFor(k,w,h){
@@ -1532,13 +1703,82 @@ function renderStudioHome(){
  const none=$('#none');none.textContent=WCAT[wcat].empty;none.hidden=items.length>0;
  $('#grid').querySelectorAll('[data-last]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem(a.dataset.last,a.dataset.id)}catch(_){}}));
 }
+/* ---------------- system docs checks ---------------- */
+function sysJSON(t){try{return JSON.parse(t)}catch(_){return null}}
+function sysKB(){let n=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);n+=(k.length+String(localStorage.getItem(k)||'').length)*2}}catch(_){}return (n/1024).toFixed(1)}
+function sysItemCount(k){try{const v=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(v)?v.length+' saved':(v==null?'empty':'set')}catch(_){return 'invalid JSON'}}
+async function sysTable(url,key,table,cols){
+ try{
+  const r=await fetch(`${url}/rest/v1/${table}?select=${cols}&limit=1`,{headers:{apikey:key,Authorization:'Bearer '+key,Prefer:'count=exact',Range:'0-0'}});
+  const txt=await r.text();
+  if(r.ok){
+   const total=(r.headers.get('content-range')||'').split('/')[1];
+   return {state:'ok',detail:`Reachable \u00b7 ${total==null?'rows hidden by RLS':total+' row'+(total==='1'?'':'s')+' visible to this session'} \u00b7 columns match schema`};
+  }
+  const j=sysJSON(txt),msg=(j&&(j.message||j.hint||j.details))||('HTTP '+r.status);
+  if(/could not find the table|schema cache/i.test(msg))return {state:'err',detail:'Table missing \u2014 run supabase/schema.sql in Supabase'};
+  if(/column .* does not exist/i.test(msg))return {state:'err',detail:'Column mismatch \u2014 '+msg};
+  return {state:'err',detail:'HTTP '+r.status+' \u00b7 '+msg};
+ }catch(e){return {state:'err',detail:'Network error \u00b7 '+(e.message||e)}}
+}
+async function sysRpc(url,key,fn,payload){
+ try{
+  const r=await fetch(`${url}/rest/v1/rpc/${fn}`,{method:'POST',headers:{apikey:key,Authorization:'Bearer '+key,'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  const j=sysJSON(await r.text());
+  if(r.ok)return {state:'ok',detail:'Callable'};
+  const code=(j&&j.code)||'',msg=(j&&(j.message||j.details||j.hint))||('HTTP '+r.status);
+  if(code==='PGRST202'||/could not find the function|function .* does not exist/i.test(msg))return {state:'err',detail:'Function missing \u2014 run supabase/schema.sql in Supabase'};
+  return {state:'ok',detail:'Callable \u00b7 guard: '+msg};
+ }catch(e){return {state:'err',detail:'Network error \u00b7 '+(e.message||e)}}
+}
+async function runChecks(){
+ const body=$('#sysRows');if(!body)return;
+ const btn=$('#sysRun');if(btn)btn.disabled=true;
+ body.innerHTML='<tr><td colspan="3">Running checks\u2026</td></tr>';
+ const note=$('#sysNote');if(note)note.textContent='';
+ const rows=[];
+ const add=(name,detail,state)=>rows.push([name,detail,state||'warn']);
+ let lsOk=true,lsErr='';
+ try{localStorage.setItem('uivb:probe','1');localStorage.removeItem('uivb:probe')}catch(e){lsOk=false;lsErr=e.message||'unavailable'}
+ add('Browser storage (localStorage)',lsOk?`Writable \u00b7 ${sysKB()} KB used`:'Not writable \u00b7 '+lsErr,lsOk?'ok':'err');
+ if(lsOk){
+  add('Local stores',['dropform:projects','charlab:projects','mapstudio:maps'].map(k=>k+': '+sysItemCount(k)).join(' \u00b7 '),'ok');
+  const bad=[];
+  [['dropform:projects','Dashboard designs'],['charlab:projects','Characters'],['mapstudio:maps','Maps']].forEach(([k,l])=>{const v=localStorage.getItem(k);if(v==null)return;const j=sysJSON(v);if(!Array.isArray(j))bad.push(l+' ('+k+')')});
+  add('Local store integrity',bad.length?'Not a JSON array: '+bad.join(', '):'Every local store parses as a JSON array',bad.length?'err':'ok');
+ }
+ const cfg=window.UICLOUD_CONFIG||{},url=String(cfg.url||'').replace(/\/+$/,''),key=String(cfg.anonKey||''),on=!!(url&&key);
+ add('Cloud config (supabase-config.js)',on?url:'No project URL or anon key \u2014 app stays local-only',on?'ok':'warn');
+ if(on){
+  const t1=await sysTable(url,key,'projects','id,owner,name,device,data,updated_at');add('Table public.projects',t1.detail,t1.state);
+  const t2=await sysTable(url,key,'project_members','project_id,user_id,role,added_at');add('Table public.project_members',t2.detail,t2.state);
+  const f1=await sysRpc(url,key,'list_project_members',{p_project_id:'__probe__'});add('Function public.list_project_members',f1.detail,f1.state);
+  const f2=await sysRpc(url,key,'share_project',{p_project_id:'__probe__',p_email:'probe@example.com',p_role:'edit'});add('Function public.share_project',f2.detail,f2.state);
+  let u=null;try{u=window.Cloud&&window.Cloud.user}catch(_){}
+  add('Cloud session',u?'Signed in as '+(u.email||u.id):'Guest \u2014 cloud reads run with the anon role',u?'ok':'warn');
+ }
+ body.innerHTML='';
+ rows.forEach(([name,detail,state])=>{
+  const tr=document.createElement('tr'),a=document.createElement('td'),b=document.createElement('td'),c=document.createElement('td');
+  a.textContent=name;b.textContent=detail;
+  c.innerHTML=`<span class="badge ${state}">${state==='ok'?'ok':state==='err'?'error':'warn'}</span>`;
+  tr.append(a,b,c);body.appendChild(tr);
+ });
+ const bad=rows.filter(r=>r[2]==='err').length;
+ if(note)note.textContent=bad?`${bad} check${bad>1?'s':''} found a problem \u2014 fix the red rows, then run again.`:'No errors found: every configured store and table answered correctly.';
+ if(btn)btn.disabled=false;
+}
+if(document.getElementById('sysRun'))document.getElementById('sysRun').onclick=runChecks;
 function home(){show('home');
  const meta=WCAT[wcat];
  $('#heroEyebrow').textContent=meta.eyebrow;$('#heroTitle').textContent=meta.title;$('#heroSub').textContent=meta.sub;$('#newh').textContent=meta.card;
- const studio=wcat==='charstudio'||wcat==='mapstudio';
+ const studio=wcat==='charstudio'||wcat==='mapstudio',schema=wcat==='schema';
  const actStudio=$('#actStudio'),actFile=$('#actFile');
- if(actStudio)actStudio.hidden=studio;
- if(actFile)actFile.hidden=studio;
+ if(actStudio)actStudio.hidden=studio||schema;
+ if(actFile)actFile.hidden=studio||schema;
+ const docs=$('#sysdocs');if(docs)docs.hidden=!schema;
+ $('#grid').hidden=schema;
+ if(schema){$('#none').hidden=true;runChecks();return}
  if(studio){renderStudioHome();return}
  const list=mem.filter(p=>kindOf(p)===wcat);
  $('#grid').innerHTML=`<button class="pcard new" id="newc"><span>+</span>${WCAT[wcat].card}</button>`+list.slice().sort((a,b)=>b.updated-a.updated).map(p=>{const c=WCAT[kindOf(p)],dv=DEV[p.device]||DEV.pc;return `<div class="pcard"><div class="th">${p.thumb?`<img alt="" src="${p.thumb}">`:''}</div><b>${esc(p.name)}</b><small>${c.n} \u00b7 ${dv.n}, ${new Date(p.updated).toLocaleDateString()}</small><div class="acts"><button class="btn" data-o="${p.id}">Open</button><button class="btn" data-d="${p.id}">Delete</button></div></div>`}).join('');
@@ -1564,7 +1804,7 @@ $('#devs').onclick=e=>{const o=e.target.closest('.opt');if(!o)return;dev=o.datas
 $('#dcancel').onclick=()=>dm.classList.remove('on');
 dm.onclick=e=>{if(e.target==dm)dm.classList.remove('on')};
 $('#mk').onclick=()=>{dm.classList.remove('on');const[w,h]=$('#dsz').value.split('x').map(Number);newProj($('#dn').value.trim()||WCAT[wcat].name,dev,tplFor(wcat,w,h),{w,h,rot:!!(drot&&ROT[dev]),kind:wcat})};
-$('#newh').onclick=()=>{if(wcat==='charstudio'){location.href='studio.html';return}if(wcat==='mapstudio'){location.href='game.html';return}openNew()};
+$('#newh').onclick=()=>{if(wcat==='charstudio'){location.href='studio.html';return}if(wcat==='mapstudio'){location.href='game.html';return}if(wcat==='schema'){runChecks();return}openNew()};
 $('#grid').onclick=e=>{const o=e.target.closest('[data-o]'),d=e.target.closest('[data-d]');
  if(e.target.closest('#newc'))return openNew();
  if(o)openProj(mem.find(p=>p.id==o.dataset.o));
