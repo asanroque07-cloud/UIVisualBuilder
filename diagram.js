@@ -179,6 +179,111 @@ function overlap(a,b,pad){
  pad=pad||0;
  return a.x<b.x+b.w+pad&&a.x+a.w>b.x-pad&&a.y<b.y+b.h+pad&&a.y+a.h>b.y-pad;
 }
+function segHitsRect(a,b,r,pad){
+ pad=pad||0;
+ const x0=r.x-pad,y0=r.y-pad,x1=r.x+r.w+pad,y1=r.y+r.h+pad;
+ const dx=b.x-a.x,dy=b.y-a.y;
+ let t0=0,t1=1;
+ const p=[-dx,dx,-dy,dy],q=[a.x-x0,x1-a.x,a.y-y0,y1-a.y];
+ for(let i=0;i<4;i++){
+  if(!p[i]){if(q[i]<0)return false;continue}
+  const t=q[i]/p[i];
+  if(p[i]<0){if(t>t1)return false;if(t>t0)t0=t}
+  else{if(t<t0)return false;if(t<t1)t1=t}
+ }
+ return true;
+}
+function polyLen(pts){let l=0;for(let i=0;i<pts.length-1;i++)l+=Math.hypot(pts[i+1].x-pts[i].x,pts[i+1].y-pts[i].y);return l}
+// a polyline is clear when no segment cuts through a box; the open end of the first/last
+// segment is allowed to sit on the borders of the two boxes it links
+function polyClear(pts,all,from,to){
+ const last=pts.length-2;
+ for(let i=0;i<=last;i++){
+  for(let k=0;k<all.length;k++){
+   const r=all[k];
+   if(i===0&&r===from)continue;
+   if(i===last&&r===to)continue;
+   if(segHitsRect(pts[i],pts[i+1],r,2))return false;
+  }
+ }
+ return true;
+}
+// straight edge when nothing is in the way, otherwise an orthogonal detour through the
+// nearest free gutter so a link never runs through an unrelated object
+function edgePath(A,B,others,bounds){
+ const cx1=A.x+A.w/2,cy1=A.y+A.h/2,cx2=B.x+B.w/2,cy2=B.y+B.h/2;
+ const dx=cx2-cx1,dy=cy2-cy1;
+ const p1=clip(A,dx,dy),p2=clip(B,-dx,-dy);
+ const all=[A,B].concat(others||[]);
+ const straight=[p1,p2];
+ if(polyClear(straight,all,A,B))return straight;
+ const bd=bounds||{w:4000,h:4000};
+ const lim=(v,lo,hi)=>Math.round(Math.min(hi,Math.max(lo,v))*10)/10;
+ const xs=[],ys=[];
+ const add=(arr,v)=>{if(arr.indexOf(v)<0)arr.push(v)};
+ const maxR=Math.max.apply(null,all.map(r=>r.x+r.w)),minL=Math.min.apply(null,all.map(r=>r.x));
+ const maxB=Math.max.apply(null,all.map(r=>r.y+r.h)),minT=Math.min.apply(null,all.map(r=>r.y));
+ add(xs,lim(maxR+46,8,bd.w-10));add(xs,lim(minL-46,8,bd.w-10));add(xs,8);add(xs,bd.w-10);
+ add(ys,lim(maxB+46,8,bd.h-10));add(ys,lim(minT-46,8,bd.h-10));add(ys,8);add(ys,bd.h-10);
+ const cands=[];
+ xs.forEach(x=>{
+  cands.push([{x:A.x+A.w,y:cy1},{x,y:cy1},{x,y:cy2},{x:B.x+B.w,y:cy2}]);
+  cands.push([{x:A.x,y:cy1},{x,y:cy1},{x,y:cy2},{x:B.x,y:cy2}]);
+ });
+ ys.forEach(y=>{
+  cands.push([{x:cx1,y:A.y+A.h},{x:cx1,y},{x:cx2,y},{x:cx2,y:B.y+B.h}]);
+  cands.push([{x:cx1,y:A.y},{x:cx1,y},{x:cx2,y},{x:cx2,y:B.y}]);
+ });
+ let best=null,bestLen=Infinity;
+ cands.forEach(c=>{
+  const pts=c.filter((p,i)=>i===0||Math.abs(p.x-c[i-1].x)>0.6||Math.abs(p.y-c[i-1].y)>0.6);
+  if(pts.length<3)return;
+  if(!polyClear(pts,all,A,B))return;
+  const l=polyLen(pts);
+  if(l<bestLen){bestLen=l;best=pts}
+ });
+ if(!best)return straight;
+ const li=best.length-1,a=best[li-1],b=best[li],l=Math.hypot(b.x-a.x,b.y-a.y);
+ if(l>6)best[li]={x:b.x-(b.x-a.x)*2.5/l,y:b.y-(b.y-a.y)*2.5/l};
+ return best;
+}
+function polyAt(pts,f){
+ let total=0,segs=[];
+ for(let i=0;i<pts.length-1;i++){const l=Math.hypot(pts[i+1].x-pts[i].x,pts[i+1].y-pts[i].y);segs.push({a:pts[i],b:pts[i+1],l});total+=l}
+ let t=total*(f==null?.5:f);
+ for(let i=0;i<segs.length;i++){
+  const s=segs[i];
+  if(t<=s.l||i===segs.length-1){
+   const ux=(s.b.x-s.a.x)/(s.l||1),uy=(s.b.y-s.a.y)/(s.l||1);
+   return {x:s.a.x+ux*t,y:s.a.y+uy*t,nx:-uy,ny:ux};
+  }
+  t-=s.l;
+ }
+ return {x:pts[0].x,y:pts[0].y,nx:0,ny:-1};
+}
+function polyMid(pts){return polyAt(pts,.5)}
+// pack order that follows the links, so linked objects end up next to each other
+function connectedOrder(list){
+ const items=list.slice();
+ if(items.length<2)return items;
+ const byId=new Map(items.map(o=>[o.n.id,o]));
+ const adj=new Map(items.map(o=>[o.n.id,[]]));
+ D.edges.forEach(e=>{
+  const a=adj.get(e.from),b=adj.get(e.to);
+  if(a&&b&&a!==b){a.push(e.to);b.push(e.from)}
+ });
+ const rank=new Map(items.map((o,i)=>[o.n.id,o.b.y*10000+o.b.x*10+i]));
+ const seen=new Set(),out=[];
+ const walk=id=>{
+  if(seen.has(id))return;
+  seen.add(id);
+  const it=byId.get(id);if(it)out.push(it);
+  (adj.get(id)||[]).slice().sort((x,y)=>(rank.get(x)||0)-(rank.get(y)||0)).forEach(walk);
+ };
+ items.slice().sort((a,b)=>rank.get(a.n.id)-rank.get(b.n.id)).forEach(o=>walk(o.n.id));
+ items.forEach(o=>{if(!seen.has(o.n.id))out.push(o)});
+ return out;
+}
 function nodeEl(id){return $('#nodes .dgn[data-id="'+id+'"]')}
 function clearLabels(){
  const svg=$('#labels');if(!svg)return;
@@ -240,30 +345,30 @@ function fit(force){
   if(overlap(boxes[i].b,boxes[j].b,2)){over=true;break}
  }
  if(!over)return false;
- const pad=22,gap=18,gapY=26;
- const pack=(list)=>{let x=pad,y=pad,bottom=y;list.forEach(({n,b})=>{if(x+b.w>cw-12&&x>pad){x=pad;y=bottom+gapY}n.x=x;n.y=y;x+=b.w+gap;bottom=Math.max(bottom,y+b.h)});return bottom};
+ const pad=22,padL=52,gap=18,gapY=26;
+ const pack=(list)=>{let x=padL,y=pad,bottom=y;list.forEach(({n,b})=>{if(x+b.w>cw-12&&x>padL){x=padL;y=bottom+gapY}n.x=x;n.y=y;x+=b.w+gap;bottom=Math.max(bottom,y+b.h)});return bottom};
  let need=0;
  if(D.mode==='uc'){
   const actors=boxes.filter(o=>o.n.kind==='actor'),ucs=boxes.filter(o=>o.n.kind==='uc'),rest=boxes.filter(o=>o.n.kind!=='actor'&&o.n.kind!=='uc');
   let y=pad;
   const actorW=actors.length?Math.max(...actors.map(o=>o.b.w)):0;
-  actors.forEach(({n,b})=>{n.x=pad;n.y=y;y+=b.h+gapY});
-  const colX=pad+actorW+40;
+  connectedOrder(actors).forEach(({n,b})=>{n.x=padL;n.y=y;y+=b.h+gapY});
+  const colX=padL+actorW+40;
   const ucW=ucs.length?Math.max(...ucs.map(o=>o.b.w)):0;
   if(ucs.length&&actors.length&&colX+ucW+38<=cw-4){
    let uy=pad;
-   ucs.forEach(({n,b})=>{n.x=colX;n.y=uy;uy+=b.h+gapY});
+   connectedOrder(ucs).forEach(({n,b})=>{n.x=colX;n.y=uy;uy+=b.h+gapY});
    need=Math.max(y,uy);
   }else if(ucs.length){
-   let ux=pad,uy=actors.length?y+56:pad,maxY=uy;
-   ucs.forEach(({n,b})=>{
-    if(ux+b.w>cw-12&&ux>pad){ux=pad;uy=maxY+gapY}
+   let ux=padL,uy=actors.length?y+56:pad,maxY=uy;
+   connectedOrder(ucs).forEach(({n,b})=>{
+    if(ux+b.w>cw-12&&ux>padL){ux=padL;uy=maxY+gapY}
     n.x=ux;n.y=uy;ux+=b.w+gap;maxY=Math.max(maxY,uy+b.h);
    });
    need=Math.max(maxY,actors.length?y:0);
   }else need=y;
-  if(rest.length)need=Math.max(need,pack(rest));
- }else need=pack(boxes);
+  if(rest.length)need=Math.max(need,pack(connectedOrder(rest)));
+ }else need=pack(connectedOrder(boxes));
  need+=pad;
  cv.style.minHeight=need>cv.clientHeight?need+'px':'';
  return true;
@@ -274,27 +379,53 @@ function draw(){
  svg.setAttribute('viewBox','0 0 '+cw+' '+ch);
  const out=['<defs><marker id="arw" viewBox="0 0 10 10" refX="9.2" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>'];
  const boxes=$$('#nodes .dgn').map(el=>({el,b:box(el)}));
+ const ucBoxes=boxes.filter(o=>{const n=nodeOf(o.el.dataset.id);return n&&n.kind==='uc'}).map(o=>o.b);
+ const sysName=String(D.system||'').trim();
  const boxFor=el=>{const f=boxes.find(o=>o.el===el);return f?f.b:box(el)};
- const labels=[];
+ const labels=[],placed=[];
  D.edges.forEach(e=>{
   const a=nodeEl(e.from),b=nodeEl(e.to);
   if(!a||!b)return;
   const A=boxFor(a),B=boxFor(b);
-  const dx=B.x+B.w/2-(A.x+A.w/2),dy=B.y+B.h/2-(A.y+A.h/2);
-  const p1=clip(A,dx,dy),p2=clip(B,-dx,-dy);
-  const len=Math.hypot(p2.x-p1.x,p2.y-p1.y)||1;
-  const g=Math.min(2.5,len/3),ux=(p2.x-p1.x)/len,uy=(p2.y-p1.y)/len;
-  const x1=p1.x+ux*g,y1=p1.y+uy*g,x2=p2.x-ux*g,y2=p2.y-uy*g;
+  const others=boxes.filter(o=>o.el!==a&&o.el!==b).map(o=>o.b);
+  const pts=edgePath(A,B,others,{w:cw,h:ch});
+  const d=pts.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' ');
   const on=D.selEdge===e.id?' on':'';
-  out.push('<line class="ln'+on+'" x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" marker-end="url(#arw)"/>');
-  out.push('<line class="hit" data-edge="'+e.id+'" x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'"/>');
+  out.push('<path class="ln'+on+'" d="'+d+'" marker-end="url(#arw)"/>');
+  out.push('<path class="hit" data-edge="'+e.id+'" d="'+d+'"/>');
   if(e.label){
-   const mx=(x1+x2)/2,my=(y1+y2)/2,nx=-uy,ny=ux;
-   const top=Math.min(A.y,B.y),bottom=Math.max(A.y+A.h,B.y+B.h);
-   const cand=[{x:mx+nx*13,y:my+ny*13},{x:mx-nx*13,y:my-ny*13},{x:mx,y:top-11},{x:mx,y:bottom+19}];
    const tw=String(e.label).length*6.4+6,th=13;
-   const hits=p=>boxes.some(o=>p.x-tw/2<o.b.x+o.b.w+3&&p.x+tw/2>o.b.x-3&&p.y-th/2<o.b.y+o.b.h+3&&p.y+th/2>o.b.y-3);
-   const pick=cand.find(p=>!hits(p))||cand[0];
+   // the system boundary caption, placed the same way drawBoundary() places it
+   const cap=(D.mode==='uc'&&sysName&&ucBoxes.length)?{
+    x:Math.max(4,Math.min.apply(null,ucBoxes.map(b=>b.x))-34)+14,
+    y:Math.max(4,Math.min.apply(null,ucBoxes.map(b=>b.y))-40)+9,
+    w:Math.min(150,sysName.length*7.6+4),h:13}:null;
+   const rectOf=p=>({x:p.x-tw/2,y:p.y-th/2,w:tw,h:th});
+   const hits=p=>boxes.some(o=>p.x-tw/2<o.b.x+o.b.w+3&&p.x+tw/2>o.b.x-3&&p.y-th/2<o.b.y+o.b.h+3&&p.y+th/2>o.b.y-3)
+    ||(cap&&p.x-tw/2<cap.x+cap.w+3&&p.x+tw/2>cap.x-3&&p.y-th/2<cap.y+cap.h+3&&p.y+th/2>cap.y-3)
+    ||placed.some(r=>p.x-tw/2<r.x+r.w+4&&p.x+tw/2>r.x-4&&p.y-th/2<r.y+r.h+3&&p.y+th/2>r.y-3);
+   const inside=p=>p.x-tw/2>2&&p.x+tw/2<cw-3;
+   const cand=[];
+   [.5,.36,.64,.24,.76].forEach(f=>{
+    const m=polyAt(pts,f);
+    [13,25].forEach(k=>{
+     cand.push({x:m.x+m.nx*k,y:m.y+m.ny*k});
+     cand.push({x:m.x-m.nx*k,y:m.y-m.ny*k});
+    });
+    cand.push({x:m.x,y:m.y-12});
+    cand.push({x:m.x,y:m.y+15});
+   });
+   const m=polyMid(pts),top=Math.min(A.y,B.y),bottom=Math.max(A.y+A.h,B.y+B.h);
+   cand.push({x:m.x,y:top-11},{x:m.x,y:bottom+19});
+   // free bands between objects: a label there can sit next to the line without covering anything
+   const rx=Math.min(Math.max(m.x,tw/2+4),cw-tw/2-4);
+   const ys=boxes.map(o=>o.b).sort((a,b)=>a.y-b.y);
+   for(let i=0;i<ys.length-1;i++){
+    const g0=ys[i].y+ys[i].h,g1=ys[i+1].y;
+    if(g1-g0>=th+5){cand.push({x:rx,y:(g0+g1)/2},{x:cw/2,y:(g0+g1)/2})}
+   }
+   const pick=cand.find(p=>!hits(p)&&inside(p))||cand.find(p=>!hits(p))||cand[0];
+   placed.push(rectOf(pick));
    labels.push('<text x="'+pick.x.toFixed(1)+'" y="'+pick.y.toFixed(1)+'" text-anchor="middle" dominant-baseline="middle">'+esc(e.label)+'</text>');
   }
  });
@@ -695,14 +826,14 @@ function exportSvg(){
   '<rect width="100%" height="100%" fill="#ffffff"/>'];
  if(bound)out.push('<rect x="'+(bound.x0+ox).toFixed(1)+'" y="'+(bound.y0+oy).toFixed(1)+'" width="'+(bound.x1-bound.x0).toFixed(1)+'" height="'+(bound.y1-bound.y0).toFixed(1)+'" rx="12" fill="#f8f9ff" stroke="#b9c4e6" stroke-dasharray="6 5"/><text x="'+(bound.x0+ox+13).toFixed(1)+'" y="'+(bound.y0+oy+18).toFixed(1)+'" font-size="10.5" font-weight="800" fill="#6d7cff">'+esc(D.system)+'</text>');
  const bb=id=>{const f=items.find(i=>i.n.id===id);return f?{x:f.b.x+ox,y:f.b.y+oy,w:f.b.w,h:f.b.h}:null};
+ const allBoxes=items.map(i=>({x:i.b.x+ox,y:i.b.y+oy,w:i.b.w,h:i.b.h}));
  D.edges.forEach(e=>{
   const A=bb(e.from),B=bb(e.to);if(!A||!B)return;
-  const dx=B.x+B.w/2-(A.x+A.w/2),dy=B.y+B.h/2-(A.y+A.h/2);
-  const p1=clip(A,dx,dy),p2=clip(B,-dx,-dy);
-  const len=Math.hypot(p2.x-p1.x,p2.y-p1.y)||1,g=Math.min(2.5,len/3),ux=(p2.x-p1.x)/len,uy=(p2.y-p1.y)/len;
-  const x1=p1.x+ux*g,y1=p1.y+uy*g,x2=p2.x-ux*g,y2=p2.y-uy*g;
-  out.push('<line x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" stroke="#5b6b8f" stroke-width="1.8" marker-end="url(#a)"/>');
-  if(e.label)out.push('<text x="'+(((x1+x2)/2)).toFixed(1)+'" y="'+(((y1+y2)/2)-6).toFixed(1)+'" text-anchor="middle" font-size="11" font-weight="700" fill="#5b6b8f">'+esc(e.label)+'</text>');
+  const others=allBoxes.filter(r=>r!==A&&r!==B);
+  const pts=edgePath(A,B,others,{w:W,h:H});
+  const d=pts.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' ');
+  out.push('<path d="'+d+'" fill="none" stroke="#5b6b8f" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#a)"/>');
+  if(e.label){const m=polyMid(pts);out.push('<text x="'+m.x.toFixed(1)+'" y="'+(m.y-6).toFixed(1)+'" text-anchor="middle" font-size="11" font-weight="700" fill="#5b6b8f">'+esc(e.label)+'</text>')}
  });
  items.forEach(({n,b})=>{
   const d=def(n.kind)||{};
